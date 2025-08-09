@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+    flake-compat.url = "github:edolstra/flake-compat";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
