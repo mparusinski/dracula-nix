@@ -9,8 +9,7 @@
 
   outputs =
     { self, nixpkgs, ... }@inputs:
-    let
-      inherit (nixpkgs) lib;
+    let inherit (nixpkgs) lib;
       systems = lib.systems.flakeExposed;
       devSystems = [
         "x86_64-linux"
@@ -54,7 +53,6 @@
                 originShellHook = self.checks.${system}.pre-commit-check.shellHook;
               in
               ''
-                ${originShellHook}
                 echo "Welcome to Dracula Nix development shell"
               '';
             buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
