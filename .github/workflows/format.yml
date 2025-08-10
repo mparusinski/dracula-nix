@@ -6,6 +6,9 @@ on:
       - "main"
     workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -35,5 +38,3 @@ jobs:
             git commit -am "style: format ${{ steps.rev.outputs.rev }}"
             git push
           fi
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
