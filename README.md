@@ -13,7 +13,37 @@
 
 ## Usage
 
-**Section not ready**
+### Installation
+
+Using `flake.nix` include `dracula-nix` to your inputs :
+
+```nix
+{
+  description = <your code>;
+  inputs = {
+    <your code>
+    dracula.url = "github:mparusinski/dracula-nix";
+  };
+  outputs = { self, nixpkgs, dracula, ...}@inputs:
+  {
+    nixosConfigurations.<your hostname> = nixpkgs.lib.nixosSystem {
+      <your code>
+      modules = [
+        <your code>
+        dracula.nixosModules.dracula
+        inputs.home-manager.nixosModules.home-manager {
+          <your code>
+          imports = [
+            ./home.nix
+            dracula.homeModules.dracula
+          ];
+        };
+      ];
+    }
+  }
+}
+
+```
 
 ## 💝 Thanks to
 
