@@ -49,12 +49,15 @@
         in
         {
           default = pkgs.mkShell {
-            packages = with pkgs; [
-              nixfmt-rfc-style
-            ];
-            shellHook = ''
-              echo "Welcome to dracula-nix development shell"
-            '';
+            shellHook =
+              let
+                originShellHook = self.checks.${system}.pre-commit-check.shellHook;
+              in
+              ''
+                ${originShellHook}
+                echo "Welcome to Dracula Nix development shell"
+              '';
+            buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
           };
         }
       );
