@@ -9,7 +9,8 @@
 
   outputs =
     { self, nixpkgs, ... }@inputs:
-    let inherit (nixpkgs) lib;
+    let
+      inherit (nixpkgs) lib;
       systems = lib.systems.flakeExposed;
       devSystems = [
         "x86_64-linux"
