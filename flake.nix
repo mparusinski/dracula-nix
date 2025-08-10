@@ -54,6 +54,7 @@
                 originShellHook = self.checks.${system}.pre-commit-check.shellHook;
               in
               ''
+                ${originShellHook}
                 echo "Welcome to Dracula Nix development shell"
               '';
             buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
